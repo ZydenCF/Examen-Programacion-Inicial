@@ -21,6 +21,5 @@ public abstract class Estructura : MonoBehaviour
         Debug.Log($"{Nombre} ha sido mejorado al nivel {Nivel}.");
     }
 
-    // Método abstracto para operar
     public abstract void Operar();
 }

@@ -12,14 +12,12 @@ public class Juego : MonoBehaviour
         estructuras = new List<Estructura>();
     }
 
-    // Método para agregar estructuras a la ciudad
     public void AgregarEstructura(Estructura estructura)
     {
         estructuras.Add(estructura);
         Console.WriteLine($"{estructura.Nombre} ha sido agregada a la ciudad.");
     }
 
-    // Método para operar todas las estructuras
     public void OperarCiudad()
     {
         Console.WriteLine("Operando las estructuras de la ciudad:");
@@ -30,7 +28,6 @@ public class Juego : MonoBehaviour
         }
     }
 
-    // Método para mejorar todas las estructuras
     public void MejorarCiudad()
     {
         foreach (var estructura in estructuras)
