@@ -1,27 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
-using System;
 using UnityEngine;
 
-public class Recoleccion : Estructura
+public class Recoleccion : Construccion
 {
-    public int RecursosPorTurno;
+    private int recursosGenerados;
 
-    public Recoleccion() { }
-
-    public void InicializarRecoleccion(string nombre, int nivel, int recursosPorTurno)
+    public Recoleccion(string nombre, int nivel, int costoMantenimiento, int recursosGenerados): base(nombre, nivel, costoMantenimiento)
     {
-        Inicializar(nombre, nivel); 
-        RecursosPorTurno = recursosPorTurno;
-    }
-
-    public override int CalcularIngresos()
-    {
-        return RecursosPorTurno * Nivel;
+        this.recursosGenerados = recursosGenerados;
     }
 
     public override void Operar()
     {
-        Debug.Log($"{Nombre} está recolectando {RecursosPorTurno} recursos por turno.");
+        recursosGenerados *= nivel;
+    }
+
+    public int ObtenerRecursosGenerados()
+    {
+        return recursosGenerados;
     }
 }

@@ -1,25 +1,24 @@
 using System.Collections;
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Defensa : Estructura
+public class Defensa : Construccion
 {
-    public int PuntosDeDefensa { get; set; }
+    private int fuerzaDefensiva;
 
-    public void InicializarDefensa(string nombre, int nivel, int puntosDeDefensa)
+    public Defensa(string nombre, int nivel, int costoMantenimiento, int fuerzaDefensiva) : base(nombre, nivel, costoMantenimiento)
     {
-        Inicializar(nombre, nivel);
-        PuntosDeDefensa = puntosDeDefensa;
-    }
-
-    public override int CalcularIngresos()
-    {
-        return 0;
+        this.fuerzaDefensiva = fuerzaDefensiva;
     }
 
     public override void Operar()
     {
-        Debug.Log($"{Nombre} está defendiendo con {PuntosDeDefensa * Nivel} puntos de defensa.");
+        fuerzaDefensiva *= nivel;
     }
+
+    public int ObtenerFuerzaDefensiva()
+    {
+        return fuerzaDefensiva;
+    }
+
 }

@@ -3,18 +3,29 @@ using System.Collections.Generic;
 using System;
 using UnityEngine;
 
-public class Program
+public class Program : MonoBehaviour
 {
     static void Main(string[] args)
     {
-        Juego juego = new Juego();
+        Cuidad cuidad = new Cuidad();
 
-        Recoleccion mina = new Recoleccion();
-        mina.InicializarRecoleccion("Mina de Oro", 1, 10);
-        juego.AgregarEstructura(mina);
-        juego.OperarCiudad();
+        // Agregar construcciones
+        Recoleccion granero = new Recoleccion("Granero", 1, 5, 10);
+        Defensa muralla = new Defensa("Muralla", 1, 8, 15);
 
-        juego.MejorarCiudad();
-        juego.OperarCiudad();
+        cuidad.AgregarConstruccion(granero);
+        cuidad.AgregarConstruccion(muralla);
+
+        // Ejecutar varios turnos
+        for (int i = 0; i < 5; i++)
+        {
+            Console.WriteLine($"Turno {i + 1}");
+            cuidad.EjecutarTurno();
+
+            // Mostrar valores después del turno
+            Console.WriteLine($"Recursos generados por el granero: {granero.ObtenerRecursosGenerados()}");
+            Console.WriteLine($"Fuerza defensiva de la muralla: {muralla.ObtenerFuerzaDefensiva()}");
+            Console.WriteLine($"Recursos restantes en la ciudad: {cuidad.EjecutarTurno()}");
+        }
     }
 }

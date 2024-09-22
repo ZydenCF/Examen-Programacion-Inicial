@@ -1,30 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
-using System;
 using UnityEngine;
 
-public class Mantenimiento : Estructura, IMantenimiento
+public abstract class Mantenimiento : Construccion
 {
-    public int CostoMantenimiento { get; set; }
+    private int capacidadMantenimiento;
 
-    public void InicializarMantenimiento(string nombre, int nivel, int costoMantenimiento)
+    public Mantenimiento(string nombre, int nivel, int costoMantenimiento, int capacidadMantenimiento)
+        : base(nombre, nivel, costoMantenimiento)
     {
-        Inicializar(nombre, nivel);
-        CostoMantenimiento = costoMantenimiento;
-    }
-
-    public override int CalcularIngresos()
-    {
-        return 0;
+        this.capacidadMantenimiento = capacidadMantenimiento;
     }
 
     public override void Operar()
     {
-        Debug.Log($"{Nombre} está operando y requiere mantenimiento.");
+        capacidadMantenimiento *= nivel;
     }
 
-    public void RealizarMantenimiento()
+    public int ObtenerCapacidadMantenimiento()
     {
-        Debug.Log($"{Nombre} ha realizado el mantenimiento, costo: {CostoMantenimiento * Nivel}.");
+        return capacidadMantenimiento;
     }
 }
